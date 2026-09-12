@@ -230,6 +230,21 @@
     }
     .card br { display: none; }
 
+    /* 상품 사진 */
+    .photo {
+      width: 100%;
+      margin-bottom: 0.4rem;
+      border-radius: 14px;
+      background-color: var(--orange-soft);
+      overflow: hidden;
+    }
+    .photo img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
     .card .emoji { font-size: 3.4rem; line-height: 1.2; }
     .card h3 {
       margin: 0.7rem 0 0.6rem 0;
@@ -509,7 +524,10 @@
     <div class="card-box">
       <div class="card">
         <div class="rank">1위</div>
-        <div class="emoji">🥩</div>
+        <div class="photo">
+          <img src="images/meat-beef.jpg" alt="한우 소고기 구이용 300g" loading="lazy"
+               onerror="this.onerror=null; this.src='https://loremflickr.com/400/300/beef,steak'">
+        </div>
         <div class="today">⚡ 오늘 배송</div>
         <h3>한우 소고기 구이용 300g</h3>
         <p class="old-price">39,000원</p>
@@ -521,7 +539,10 @@
 
       <div class="card">
         <div class="rank">2위</div>
-        <div class="emoji">🍜</div>
+        <div class="photo">
+          <img src="images/ramen-sagol.jpg" alt="얼큰 사골 라면 5개입" loading="lazy"
+               onerror="this.onerror=null; this.src='https://loremflickr.com/400/300/ramen'">
+        </div>
         <h3>얼큰 사골 라면 5개입</h3>
         <p class="old-price">6,500원</p>
         <p class="new-price"><span class="sale">50%</span>3,200원</p>
@@ -532,7 +553,10 @@
 
       <div class="card">
         <div class="rank">3위</div>
-        <div class="emoji">🌭</div>
+        <div class="photo">
+          <img src="images/sausage-frank.jpg" alt="통통 후랑크 소세지" loading="lazy"
+               onerror="this.onerror=null; this.src='https://loremflickr.com/400/300/sausage'">
+        </div>
         <h3>통통 후랑크 소세지</h3>
         <p class="old-price">9,900원</p>
         <p class="new-price"><span class="sale">50%</span>5,000원</p>
@@ -557,7 +581,10 @@
     <h3 class="category-title" id="ramen">라면</h3>
     <div class="card-box">
       <div class="card">
-        <div class="emoji">🍜</div>
+        <div class="photo">
+          <img src="images/ramen-sagol.jpg" alt="얼큰 사골 라면 5개입" loading="lazy"
+               onerror="this.onerror=null; this.src='https://loremflickr.com/400/300/ramen'">
+        </div>
         <h3>얼큰 사골 라면 5개입</h3>
         <p class="old-price">6,500원</p>
         <p class="new-price"><span class="sale">50%</span>3,200원</p>
@@ -567,7 +594,10 @@
       </div>
 
       <div class="card">
-        <div class="emoji">🌶️</div>
+        <div class="photo">
+          <img src="images/ramen-bibim.jpg" alt="매콤 비빔라면 5개입" loading="lazy"
+               onerror="this.onerror=null; this.src='https://loremflickr.com/400/300/spicy,noodles'">
+        </div>
         <h3>매콤 비빔라면 5개입</h3>
         <p class="old-price">7,200원</p>
         <p class="new-price"><span class="sale">50%</span>3,600원</p>
@@ -577,7 +607,10 @@
       </div>
 
       <div class="card">
-        <div class="emoji">🍲</div>
+        <div class="photo">
+          <img src="images/ramen-seafood.jpg" alt="담백 해물 라면 5개입" loading="lazy"
+               onerror="this.onerror=null; this.src='https://loremflickr.com/400/300/seafood,noodle'">
+        </div>
         <h3>담백 해물 라면 5개입</h3>
         <p class="old-price">8,000원</p>
         <p class="new-price"><span class="sale">50%</span>4,000원</p>
@@ -590,7 +623,10 @@
     <h3 class="category-title" id="sausage">소세지</h3>
     <div class="card-box">
       <div class="card">
-        <div class="emoji">🌭</div>
+        <div class="photo">
+          <img src="images/sausage-frank.jpg" alt="통통 후랑크 소세지" loading="lazy"
+               onerror="this.onerror=null; this.src='https://loremflickr.com/400/300/sausage'">
+        </div>
         <h3>통통 후랑크 소세지</h3>
         <p class="old-price">9,900원</p>
         <p class="new-price"><span class="sale">50%</span>5,000원</p>
@@ -600,7 +636,10 @@
       </div>
 
       <div class="card">
-        <div class="emoji">🥓</div>
+        <div class="photo">
+          <img src="images/sausage-cheese.jpg" alt="구워먹는 치즈 소세지" loading="lazy"
+               onerror="this.onerror=null; this.src='https://loremflickr.com/400/300/sausage,grill'">
+        </div>
         <h3>구워먹는 치즈 소세지</h3>
         <p class="old-price">11,000원</p>
         <p class="new-price"><span class="sale">50%</span>5,500원</p>
@@ -614,7 +653,10 @@
     <p class="pack-note">🧊 모든 고기 상품은 진공포장 + 아이스팩으로 신선하게 배송됩니다. (포장비 무료)</p>
     <div class="card-box">
       <div class="card">
-        <div class="emoji">🥩</div>
+        <div class="photo">
+          <img src="images/meat-beef.jpg" alt="한우 소고기 구이용 300g" loading="lazy"
+               onerror="this.onerror=null; this.src='https://loremflickr.com/400/300/beef,steak'">
+        </div>
         <div class="today">⚡ 오늘 배송</div>
         <h3>한우 소고기 구이용 300g</h3>
         <p class="old-price">39,000원</p>
@@ -627,7 +669,10 @@
       </div>
 
       <div class="card">
-        <div class="emoji">🍖</div>
+        <div class="photo">
+          <img src="images/meat-pork.jpg" alt="국내산 돼지고기 삼겹살 500g" loading="lazy"
+               onerror="this.onerror=null; this.src='https://loremflickr.com/400/300/pork,belly'">
+        </div>
         <h3>국내산 돼지고기 삼겹살 500g</h3>
         <p class="old-price">18,000원</p>
         <p class="new-price"><span class="sale">50%</span>9,000원</p>
@@ -639,7 +684,10 @@
       </div>
 
       <div class="card">
-        <div class="emoji">🍗</div>
+        <div class="photo">
+          <img src="images/meat-chicken.jpg" alt="신선한 닭고기 정육 1kg" loading="lazy"
+               onerror="this.onerror=null; this.src='https://loremflickr.com/400/300/chicken,meat'">
+        </div>
         <h3>신선한 닭고기 정육 1kg</h3>
         <p class="old-price">12,000원</p>
         <p class="new-price"><span class="sale">50%</span>6,000원</p>
@@ -655,7 +703,10 @@
     <p class="pack-note">🧺 모두 1봉지 단위로 판매합니다. 신선하게 포장해 보내드려요.</p>
     <div class="card-box">
       <div class="card">
-        <div class="emoji">🍎</div>
+        <div class="photo">
+          <img src="images/apple-fresh.jpg" alt="햇사과 1봉지" loading="lazy"
+               onerror="this.onerror=null; this.src='https://loremflickr.com/400/300/apple'">
+        </div>
         <h3>햇사과 1봉지</h3>
         <p class="old-price">18,000원</p>
         <p class="new-price"><span class="sale">50%</span>9,000원</p>
@@ -665,7 +716,10 @@
       </div>
 
       <div class="card">
-        <div class="emoji">🍎</div>
+        <div class="photo">
+          <img src="images/apple-fuji.jpg" alt="새콤달콤 부사 사과 1봉지" loading="lazy"
+               onerror="this.onerror=null; this.src='https://loremflickr.com/400/300/apple,fruit'">
+        </div>
         <h3>새콤달콤 부사 사과 1봉지</h3>
         <p class="old-price">24,000원</p>
         <p class="new-price"><span class="sale">50%</span>12,000원</p>
@@ -675,7 +729,10 @@
       </div>
 
       <div class="card">
-        <div class="emoji">🍏</div>
+        <div class="photo">
+          <img src="images/apple-green.jpg" alt="아삭한 아오리 사과 1봉지" loading="lazy"
+               onerror="this.onerror=null; this.src='https://loremflickr.com/400/300/green,apple'">
+        </div>
         <h3>아삭한 아오리 사과 1봉지</h3>
         <p class="old-price">20,000원</p>
         <p class="new-price"><span class="sale">50%</span>10,000원</p>
@@ -685,7 +742,10 @@
       </div>
 
       <div class="card">
-        <div class="emoji">🍎</div>
+        <div class="photo">
+          <img src="images/apple-box.jpg" alt="선물용 홍로 사과 1상자" loading="lazy"
+               onerror="this.onerror=null; this.src='https://loremflickr.com/400/300/apples,box'">
+        </div>
         <h3>선물용 홍로 사과 1상자</h3>
         <p class="old-price">48,000원</p>
         <p class="new-price"><span class="sale">50%</span>24,000원</p>
@@ -695,7 +755,10 @@
       </div>
 
       <div class="card">
-        <div class="emoji">🍎</div>
+        <div class="photo">
+          <img src="images/apple-red.jpg" alt="새콤한 홍옥 사과 1박스" loading="lazy"
+               onerror="this.onerror=null; this.src='https://loremflickr.com/400/300/red,apple'">
+        </div>
         <h3>새콤한 홍옥 사과 1박스</h3>
         <p class="old-price">42,000원</p>
         <p class="new-price"><span class="sale">50%</span>21,000원</p>
@@ -705,7 +768,10 @@
       </div>
 
       <div class="card">
-        <div class="emoji">🧃</div>
+        <div class="photo">
+          <img src="images/apple-juice.jpg" alt="착즙 사과즙 30포" loading="lazy"
+               onerror="this.onerror=null; this.src='https://loremflickr.com/400/300/apple,juice'">
+        </div>
         <h3>착즙 사과즙 30포</h3>
         <p class="old-price">32,000원</p>
         <p class="new-price"><span class="sale">50%</span>16,000원</p>
@@ -715,7 +781,10 @@
       </div>
 
       <div class="card">
-        <div class="emoji">🫘</div>
+        <div class="photo">
+          <img src="images/biwassi.jpg" alt="비와씨 1봉지" loading="lazy"
+               onerror="this.onerror=null; this.src='https://loremflickr.com/400/300/seeds,bowl'">
+        </div>
         <h3>비와씨 1봉지</h3>
         <p class="old-price">28,000원</p>
         <p class="new-price"><span class="sale">50%</span>14,000원</p>
@@ -725,7 +794,10 @@
       </div>
 
       <div class="card">
-        <div class="emoji">🍐</div>
+        <div class="photo">
+          <img src="images/pear.jpg" alt="달콤한 배 1봉지" loading="lazy"
+               onerror="this.onerror=null; this.src='https://loremflickr.com/400/300/pear'">
+        </div>
         <h3>달콤한 배 1봉지</h3>
         <p class="old-price">22,000원</p>
         <p class="new-price"><span class="sale">50%</span>11,000원</p>
@@ -735,7 +807,10 @@
       </div>
 
       <div class="card">
-        <div class="emoji">🍂</div>
+        <div class="photo">
+          <img src="images/persimmon-dried.jpg" alt="쫀득 곶감 1봉지" loading="lazy"
+               onerror="this.onerror=null; this.src='https://loremflickr.com/400/300/dried,persimmon'">
+        </div>
         <h3>쫀득 곶감 1봉지</h3>
         <p class="old-price">26,000원</p>
         <p class="new-price"><span class="sale">50%</span>13,000원</p>
@@ -745,7 +820,10 @@
       </div>
 
       <div class="card">
-        <div class="emoji">🟤</div>
+        <div class="photo">
+          <img src="images/jujube.jpg" alt="국산 대추 1봉지" loading="lazy"
+               onerror="this.onerror=null; this.src='https://loremflickr.com/400/300/jujube,dates'">
+        </div>
         <h3>국산 대추 1봉지</h3>
         <p class="old-price">15,000원</p>
         <p class="new-price"><span class="sale">50%</span>7,500원</p>
@@ -755,7 +833,10 @@
       </div>
 
       <div class="card">
-        <div class="emoji">🌰</div>
+        <div class="photo">
+          <img src="images/chestnut.jpg" alt="포슬포슬 밤 1봉지" loading="lazy"
+               onerror="this.onerror=null; this.src='https://loremflickr.com/400/300/chestnut'">
+        </div>
         <h3>포슬포슬 밤 1봉지</h3>
         <p class="old-price">13,000원</p>
         <p class="new-price"><span class="sale">50%</span>6,500원</p>
@@ -769,7 +850,10 @@
     <p class="pack-note">🔞 주류는 성인만 구매할 수 있으며, 배송 시 신분증 확인이 필요합니다.</p>
     <div class="card-box">
       <div class="card">
-        <div class="emoji">🥃</div>
+        <div class="photo">
+          <img src="images/whisky-single.jpg" alt="싱글몰트 위스키 700ml" loading="lazy"
+               onerror="this.onerror=null; this.src='https://loremflickr.com/400/300/whisky'">
+        </div>
         <h3>싱글몰트 위스키 700ml</h3>
         <p class="old-price">128,000원</p>
         <p class="new-price"><span class="sale">50%</span>64,000원</p>
@@ -779,7 +863,10 @@
       </div>
 
       <div class="card">
-        <div class="emoji">🛢️</div>
+        <div class="photo">
+          <img src="images/whisky-bourbon.jpg" alt="버번 위스키 750ml" loading="lazy"
+               onerror="this.onerror=null; this.src='https://loremflickr.com/400/300/bourbon,whiskey'">
+        </div>
         <h3>버번 위스키 750ml</h3>
         <p class="old-price">72,000원</p>
         <p class="new-price"><span class="sale">50%</span>36,000원</p>
@@ -789,7 +876,10 @@
       </div>
 
       <div class="card">
-        <div class="emoji">🍯</div>
+        <div class="photo">
+          <img src="images/whisky-blended.jpg" alt="블렌디드 위스키 700ml" loading="lazy"
+               onerror="this.onerror=null; this.src='https://loremflickr.com/400/300/whiskey,bottle'">
+        </div>
         <h3>블렌디드 위스키 700ml</h3>
         <p class="old-price">55,000원</p>
         <p class="new-price"><span class="sale">50%</span>27,500원</p>
@@ -799,7 +889,10 @@
       </div>
 
       <div class="card">
-        <div class="emoji">☘️</div>
+        <div class="photo">
+          <img src="images/whisky-irish.jpg" alt="아이리시 위스키 700ml" loading="lazy"
+               onerror="this.onerror=null; this.src='https://loremflickr.com/400/300/whiskey,glass'">
+        </div>
         <h3>아이리시 위스키 700ml</h3>
         <p class="old-price">64,000원</p>
         <p class="new-price"><span class="sale">50%</span>32,000원</p>
@@ -812,7 +905,10 @@
     <h3 class="category-title" id="ball">스포츠용품</h3>
     <div class="card-box">
       <div class="card">
-        <div class="emoji">⚽</div>
+        <div class="photo">
+          <img src="images/ball-soccer.jpg" alt="튼튼한 축구공" loading="lazy"
+               onerror="this.onerror=null; this.src='https://loremflickr.com/400/300/soccer,ball'">
+        </div>
         <h3>튼튼한 축구공</h3>
         <p class="old-price">32,000원</p>
         <p class="new-price"><span class="sale">50%</span>16,000원</p>
@@ -822,7 +918,10 @@
       </div>
 
       <div class="card">
-        <div class="emoji">⚾</div>
+        <div class="photo">
+          <img src="images/ball-baseball.jpg" alt="연습용 야구공 3개입" loading="lazy"
+               onerror="this.onerror=null; this.src='https://loremflickr.com/400/300/baseball'">
+        </div>
         <h3>연습용 야구공 3개입</h3>
         <p class="old-price">18,000원</p>
         <p class="new-price"><span class="sale">50%</span>9,000원</p>
@@ -832,7 +931,10 @@
       </div>
 
       <div class="card">
-        <div class="emoji">⛳</div>
+        <div class="photo">
+          <img src="images/ball-golf.jpg" alt="골프공 12구 세트" loading="lazy"
+               onerror="this.onerror=null; this.src='https://loremflickr.com/400/300/golf,ball'">
+        </div>
         <h3>골프공 12구 세트</h3>
         <p class="old-price">45,000원</p>
         <p class="new-price"><span class="sale">50%</span>22,500원</p>
@@ -842,7 +944,10 @@
       </div>
 
       <div class="card">
-        <div class="emoji">🎾</div>
+        <div class="photo">
+          <img src="images/ball-tennis.jpg" alt="테니스공 4개입" loading="lazy"
+               onerror="this.onerror=null; this.src='https://loremflickr.com/400/300/tennis,ball'">
+        </div>
         <h3>테니스공 4개입</h3>
         <p class="old-price">16,000원</p>
         <p class="new-price"><span class="sale">50%</span>8,000원</p>
