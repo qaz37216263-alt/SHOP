@@ -247,10 +247,45 @@
     footer {
       background-color: #3E3229;
       color: #FFE3C7;
-      text-align: center;
-      padding: 35px 20px;
+      padding: 45px 20px 25px 20px;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    /* 안내를 3칸으로 나누기 */
+    .foot-box {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 50px;
+      text-align: left;
+    }
+    .foot-box h3 {
       font-size: 17px;
-      line-height: 2;
+      color: white;
+      margin: 0 0 10px 0;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #6B5A4C;
+    }
+    .foot-box div {
+      min-width: 240px;
+    }
+    .foot-box .big {
+      font-size: 26px;
+      font-weight: bold;
+      color: white;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* 맨 아랫줄 */
+    .copyright {
+      text-align: center;
+      margin-top: 35px;
+      padding-top: 20px;
+      border-top: 1px solid #6B5A4C;
+      font-size: 14px;
+      color: #C9B8A8;
     }
   </style>
 </head>
@@ -557,12 +592,33 @@
 
   <!-- 4. 맨 아래 연락처 -->
   <footer>
-    <p>
-      승지마켓 · 고객센터 1588-0000<br>
-      평일 10:00 ~ 18:00 (점심 12:00 ~ 13:00 / 주말·공휴일 휴무)<br>
-      이메일 help@seungji.com<br>
-      배송 문의는 고객센터 또는 이메일로 연락 주세요. (당일 출고 마감 오후 3시)
-    </p>
+    <div class="foot-box">
+
+      <div>
+        <h3>📞 고객센터</h3>
+        <span class="big">1588-0000</span>
+        평일 10:00 ~ 18:00<br>
+        점심 12:00 ~ 13:00<br>
+        주말·공휴일 휴무
+      </div>
+
+      <div>
+        <h3>🚚 배송 안내</h3>
+        오후 3시 이전 주문 → 내일 도착<br>
+        5만원 이상 무료배송<br>
+        고기·과일은 신선 포장 발송
+      </div>
+
+      <div>
+        <h3>✉️ 문의하기</h3>
+        이메일 help@seungji.com<br>
+        주문·배송·교환 문의는<br>
+        고객센터나 이메일로 연락 주세요.
+      </div>
+
+    </div>
+
+    <p class="copyright">승지마켓 · 연습용으로 만든 페이지입니다.</p>
   </footer>
 
   <!-- ===== JavaScript (동작) ===== -->
