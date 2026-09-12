@@ -243,6 +243,41 @@
       color: #6B5A4C;
     }
 
+    /* 찜하기 버튼 */
+    .heart-btn {
+      background-color: white;
+      color: #8A7565;
+      border: 2px solid #DDCDBD;
+      border-radius: 8px;
+      padding: 9px 18px;
+      font-size: 15px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    /* 찜한 상태일 때 */
+    .heart-btn.on {
+      background-color: #FFE3E3;
+      color: #C62828;
+      border-color: #E57373;
+      font-weight: bold;
+    }
+
+    /* 화면 오른쪽 위에 붙어 다니는 찜 목록 버튼 */
+    .wish-bar {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: white;
+      border: 2px solid #E8722A;
+      border-radius: 30px;
+      padding: 12px 22px;
+      font-size: 17px;
+      font-weight: bold;
+      color: #B4531A;
+      cursor: pointer;
+      z-index: 10;
+    }
+
     /* 4. 맨 아래 연락처 */
     footer {
       background-color: #3E3229;
@@ -292,6 +327,9 @@
 
 <body>
 
+  <!-- 찜한 상품 보기 버튼 -->
+  <div class="wish-bar" onclick="showWishList()">❤️ 찜 <span id="wishCount">0</span></div>
+
   <!-- 1. 맨 위 : 이름과 한 줄 소개 -->
   <header>
     <h1>정일마켓</h1>
@@ -327,6 +365,8 @@
         <p class="old-price">39,000원</p>
         <p class="new-price"><span class="sale">50%</span>19,500원</p>
         <button onclick="showAlert('베스트 1위 한우 소고기를 장바구니에 담았습니다.')">장바구니 담기</button>
+        <br>
+        <button class="heart-btn" data-name="한우 소고기 구이용 300g" onclick="toggleHeart(this)">🤍 찜하기</button>
       </div>
 
       <div class="card">
@@ -336,6 +376,8 @@
         <p class="old-price">6,500원</p>
         <p class="new-price"><span class="sale">50%</span>3,200원</p>
         <button onclick="showAlert('베스트 2위 얼큰 사골 라면을 장바구니에 담았습니다.')">장바구니 담기</button>
+        <br>
+        <button class="heart-btn" data-name="얼큰 사골 라면 5개입" onclick="toggleHeart(this)">🤍 찜하기</button>
       </div>
 
       <div class="card">
@@ -345,6 +387,8 @@
         <p class="old-price">9,900원</p>
         <p class="new-price"><span class="sale">50%</span>5,000원</p>
         <button onclick="showAlert('베스트 3위 통통 후랑크 소세지를 장바구니에 담았습니다.')">장바구니 담기</button>
+        <br>
+        <button class="heart-btn" data-name="통통 후랑크 소세지" onclick="toggleHeart(this)">🤍 찜하기</button>
       </div>
     </div>
   </section>
@@ -368,6 +412,8 @@
         <p class="old-price">6,500원</p>
         <p class="new-price"><span class="sale">50%</span>3,200원</p>
         <button onclick="showAlert('얼큰 사골 라면 5개입을(를) 장바구니에 담았습니다.')">장바구니 담기</button>
+        <br>
+        <button class="heart-btn" data-name="얼큰 사골 라면 5개입" onclick="toggleHeart(this)">🤍 찜하기</button>
       </div>
 
       <div class="card">
@@ -376,6 +422,8 @@
         <p class="old-price">7,200원</p>
         <p class="new-price"><span class="sale">50%</span>3,600원</p>
         <button onclick="showAlert('매콤 비빔라면 5개입을(를) 장바구니에 담았습니다.')">장바구니 담기</button>
+        <br>
+        <button class="heart-btn" data-name="매콤 비빔라면 5개입" onclick="toggleHeart(this)">🤍 찜하기</button>
       </div>
 
       <div class="card">
@@ -384,6 +432,8 @@
         <p class="old-price">8,000원</p>
         <p class="new-price"><span class="sale">50%</span>4,000원</p>
         <button onclick="showAlert('담백 해물 라면 5개입을(를) 장바구니에 담았습니다.')">장바구니 담기</button>
+        <br>
+        <button class="heart-btn" data-name="담백 해물 라면 5개입" onclick="toggleHeart(this)">🤍 찜하기</button>
       </div>
     </div>
 
@@ -395,6 +445,8 @@
         <p class="old-price">9,900원</p>
         <p class="new-price"><span class="sale">50%</span>5,000원</p>
         <button onclick="showAlert('통통 후랑크 소세지을(를) 장바구니에 담았습니다.')">장바구니 담기</button>
+        <br>
+        <button class="heart-btn" data-name="통통 후랑크 소세지" onclick="toggleHeart(this)">🤍 찜하기</button>
       </div>
 
       <div class="card">
@@ -403,6 +455,8 @@
         <p class="old-price">11,000원</p>
         <p class="new-price"><span class="sale">50%</span>5,500원</p>
         <button onclick="showAlert('구워먹는 치즈 소세지을(를) 장바구니에 담았습니다.')">장바구니 담기</button>
+        <br>
+        <button class="heart-btn" data-name="구워먹는 치즈 소세지" onclick="toggleHeart(this)">🤍 찜하기</button>
       </div>
     </div>
 
@@ -418,6 +472,8 @@
         <button onclick="showAlert('한우 소고기 구이용 300g을(를) 장바구니에 담았습니다.')">장바구니 담기</button>
         <br>
         <button class="pack-btn" onclick="showAlert('한우 소고기 구이용 300g 선물포장을 신청했습니다. (+2,000원)')">🎁 선물포장 추가</button>
+        <br>
+        <button class="heart-btn" data-name="한우 소고기 구이용 300g" onclick="toggleHeart(this)">🤍 찜하기</button>
       </div>
 
       <div class="card">
@@ -428,6 +484,8 @@
         <button onclick="showAlert('국내산 돼지고기 삼겹살 500g을(를) 장바구니에 담았습니다.')">장바구니 담기</button>
         <br>
         <button class="pack-btn" onclick="showAlert('국내산 돼지고기 삼겹살 500g 선물포장을 신청했습니다. (+2,000원)')">🎁 선물포장 추가</button>
+        <br>
+        <button class="heart-btn" data-name="국내산 돼지고기 삼겹살 500g" onclick="toggleHeart(this)">🤍 찜하기</button>
       </div>
 
       <div class="card">
@@ -438,6 +496,8 @@
         <button onclick="showAlert('신선한 닭고기 정육 1kg을(를) 장바구니에 담았습니다.')">장바구니 담기</button>
         <br>
         <button class="pack-btn" onclick="showAlert('신선한 닭고기 정육 1kg 선물포장을 신청했습니다. (+2,000원)')">🎁 선물포장 추가</button>
+        <br>
+        <button class="heart-btn" data-name="신선한 닭고기 정육 1kg" onclick="toggleHeart(this)">🤍 찜하기</button>
       </div>
     </div>
 
@@ -450,6 +510,8 @@
         <p class="old-price">18,000원</p>
         <p class="new-price"><span class="sale">50%</span>9,000원</p>
         <button onclick="showAlert('햇사과 1봉지 1봉지를 장바구니에 담았습니다.')">장바구니 담기</button>
+        <br>
+        <button class="heart-btn" data-name="햇사과 1봉지" onclick="toggleHeart(this)">🤍 찜하기</button>
       </div>
 
       <div class="card">
@@ -458,6 +520,8 @@
         <p class="old-price">22,000원</p>
         <p class="new-price"><span class="sale">50%</span>11,000원</p>
         <button onclick="showAlert('달콤한 배 1봉지 1봉지를 장바구니에 담았습니다.')">장바구니 담기</button>
+        <br>
+        <button class="heart-btn" data-name="달콤한 배 1봉지" onclick="toggleHeart(this)">🤍 찜하기</button>
       </div>
 
       <div class="card">
@@ -466,6 +530,8 @@
         <p class="old-price">26,000원</p>
         <p class="new-price"><span class="sale">50%</span>13,000원</p>
         <button onclick="showAlert('쫀득 곶감 1봉지 1봉지를 장바구니에 담았습니다.')">장바구니 담기</button>
+        <br>
+        <button class="heart-btn" data-name="쫀득 곶감 1봉지" onclick="toggleHeart(this)">🤍 찜하기</button>
       </div>
 
       <div class="card">
@@ -474,6 +540,8 @@
         <p class="old-price">15,000원</p>
         <p class="new-price"><span class="sale">50%</span>7,500원</p>
         <button onclick="showAlert('국산 대추 1봉지 1봉지를 장바구니에 담았습니다.')">장바구니 담기</button>
+        <br>
+        <button class="heart-btn" data-name="국산 대추 1봉지" onclick="toggleHeart(this)">🤍 찜하기</button>
       </div>
 
       <div class="card">
@@ -482,6 +550,8 @@
         <p class="old-price">13,000원</p>
         <p class="new-price"><span class="sale">50%</span>6,500원</p>
         <button onclick="showAlert('포슬포슬 밤 1봉지 1봉지를 장바구니에 담았습니다.')">장바구니 담기</button>
+        <br>
+        <button class="heart-btn" data-name="포슬포슬 밤 1봉지" onclick="toggleHeart(this)">🤍 찜하기</button>
       </div>
     </div>
 
@@ -494,6 +564,8 @@
         <p class="old-price">128,000원</p>
         <p class="new-price"><span class="sale">50%</span>64,000원</p>
         <button onclick="showAlert('싱글몰트 위스키 700ml을(를) 장바구니에 담았습니다.')">장바구니 담기</button>
+        <br>
+        <button class="heart-btn" data-name="싱글몰트 위스키 700ml" onclick="toggleHeart(this)">🤍 찜하기</button>
       </div>
 
       <div class="card">
@@ -502,6 +574,8 @@
         <p class="old-price">72,000원</p>
         <p class="new-price"><span class="sale">50%</span>36,000원</p>
         <button onclick="showAlert('버번 위스키 750ml을(를) 장바구니에 담았습니다.')">장바구니 담기</button>
+        <br>
+        <button class="heart-btn" data-name="버번 위스키 750ml" onclick="toggleHeart(this)">🤍 찜하기</button>
       </div>
 
       <div class="card">
@@ -510,6 +584,8 @@
         <p class="old-price">55,000원</p>
         <p class="new-price"><span class="sale">50%</span>27,500원</p>
         <button onclick="showAlert('블렌디드 위스키 700ml을(를) 장바구니에 담았습니다.')">장바구니 담기</button>
+        <br>
+        <button class="heart-btn" data-name="블렌디드 위스키 700ml" onclick="toggleHeart(this)">🤍 찜하기</button>
       </div>
 
       <div class="card">
@@ -518,6 +594,8 @@
         <p class="old-price">64,000원</p>
         <p class="new-price"><span class="sale">50%</span>32,000원</p>
         <button onclick="showAlert('아이리시 위스키 700ml을(를) 장바구니에 담았습니다.')">장바구니 담기</button>
+        <br>
+        <button class="heart-btn" data-name="아이리시 위스키 700ml" onclick="toggleHeart(this)">🤍 찜하기</button>
       </div>
     </div>
 
@@ -529,6 +607,8 @@
         <p class="old-price">32,000원</p>
         <p class="new-price"><span class="sale">50%</span>16,000원</p>
         <button onclick="showAlert('튼튼한 축구공을(를) 장바구니에 담았습니다.')">장바구니 담기</button>
+        <br>
+        <button class="heart-btn" data-name="튼튼한 축구공" onclick="toggleHeart(this)">🤍 찜하기</button>
       </div>
 
       <div class="card">
@@ -537,6 +617,8 @@
         <p class="old-price">18,000원</p>
         <p class="new-price"><span class="sale">50%</span>9,000원</p>
         <button onclick="showAlert('연습용 야구공 3개입을(를) 장바구니에 담았습니다.')">장바구니 담기</button>
+        <br>
+        <button class="heart-btn" data-name="연습용 야구공 3개입" onclick="toggleHeart(this)">🤍 찜하기</button>
       </div>
 
       <div class="card">
@@ -545,6 +627,8 @@
         <p class="old-price">45,000원</p>
         <p class="new-price"><span class="sale">50%</span>22,500원</p>
         <button onclick="showAlert('골프공 12구 세트을(를) 장바구니에 담았습니다.')">장바구니 담기</button>
+        <br>
+        <button class="heart-btn" data-name="골프공 12구 세트" onclick="toggleHeart(this)">🤍 찜하기</button>
       </div>
 
       <div class="card">
@@ -553,6 +637,8 @@
         <p class="old-price">16,000원</p>
         <p class="new-price"><span class="sale">50%</span>8,000원</p>
         <button onclick="showAlert('테니스공 4개입을(를) 장바구니에 담았습니다.')">장바구니 담기</button>
+        <br>
+        <button class="heart-btn" data-name="테니스공 4개입" onclick="toggleHeart(this)">🤍 찜하기</button>
       </div>
     </div>
   </section>
@@ -627,6 +713,62 @@
     function showAlert(message) {
       alert(message);
     }
+
+    // ===== 찜하기 기능 =====
+
+    // 찜한 상품 목록 (브라우저에 저장해 두고 다시 와도 남아 있음)
+    var wishList = JSON.parse(localStorage.getItem("wishList") || "[]");
+
+    // 찜 버튼을 눌렀을 때
+    function toggleHeart(button) {
+      var name = button.dataset.name;
+
+      if (wishList.indexOf(name) === -1) {
+        wishList.push(name);                       // 목록에 넣기
+        alert(name + "
+찜 목록에 담았습니다. ❤️");
+      } else {
+        wishList.splice(wishList.indexOf(name), 1); // 목록에서 빼기
+        alert(name + "
+찜을 취소했습니다.");
+      }
+
+      localStorage.setItem("wishList", JSON.stringify(wishList));
+      drawHearts();
+    }
+
+    // 모든 찜 버튼 모양과 개수를 다시 그리기
+    function drawHearts() {
+      var buttons = document.querySelectorAll(".heart-btn");
+
+      for (var i = 0; i < buttons.length; i++) {
+        if (wishList.indexOf(buttons[i].dataset.name) === -1) {
+          buttons[i].textContent = "🤍 찜하기";
+          buttons[i].classList.remove("on");
+        } else {
+          buttons[i].textContent = "❤️ 찜한 상품";
+          buttons[i].classList.add("on");
+        }
+      }
+
+      document.getElementById("wishCount").textContent = wishList.length;
+    }
+
+    // 오른쪽 위 찜 버튼을 눌렀을 때
+    function showWishList() {
+      if (wishList.length === 0) {
+        alert("아직 찜한 상품이 없습니다.
+마음에 드는 상품의 🤍 찜하기를 눌러보세요.");
+        return;
+      }
+      alert("❤️ 찜한 상품 " + wishList.length + "개
+
+" + wishList.join("
+"));
+    }
+
+    // 화면이 열릴 때 저장된 찜 상태를 보여주기
+    drawHearts();
   </script>
 
 </body>
