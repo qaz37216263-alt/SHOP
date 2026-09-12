@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>승지마켓</title>
+
+  <!-- ===== CSS (디자인) ===== -->
+  <style>
+    /* 전체 기본 설정 : 50대 고객을 위해 글씨를 크게 */
+    body {
+      margin: 0;
+      font-family: "맑은 고딕", sans-serif;
+      background-color: #FFF8F0;
+      color: #3E3229;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    /* 1. 맨 위 : 쇼핑몰 이름과 소개 */
+    header {
+      background-color: #E8722A;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 42px;
+    }
+    header p {
+      margin: 12px 0 0 0;
+      font-size: 20px;
+    }
+
+    /* 메뉴 4개 */
+    nav {
+      background-color: #FFE3C7;
+      text-align: center;
+      padding: 18px;
+    }
+    nav a {
+      margin: 0 18px;
+      color: #B4531A;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    /* 빠른배송 안내띠 */
+    .delivery-bar {
+      background-color: #B4531A;
+      color: white;
+      text-align: center;
+      padding: 14px 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    /* 2. 큰 배너 */
+    .banner {
+      background-color: #FFD7AE;
+      text-align: center;
+      padding: 70px 20px;
+    }
+    .banner h2 {
+      font-size: 34px;
+      margin: 0 0 12px 0;
+    }
+    .banner p {
+      font-size: 20px;
+      margin: 0 0 30px 0;
+    }
+    .banner button {
+      background-color: #E8722A;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 18px 45px;
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    /* 3. 상품 카드 3개 */
+    .products {
+      text-align: center;
+      padding: 55px 20px;
+    }
+    .products h2 {
+      font-size: 30px;
+    }
+    .card-box {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 25px;
+      margin-top: 35px;
+    }
+    .card {
+      background-color: white;
+      border: 1px solid #F0DCC8;
+      border-radius: 12px;
+      width: 260px;
+      padding: 28px;
+    }
+    .card .emoji {
+      font-size: 80px;
+    }
+    .card h3 {
+      font-size: 21px;
+      margin: 15px 0 12px 0;
+    }
+    .old-price {
+      color: #999999;
+      text-decoration: line-through;
+      font-size: 17px;
+      margin: 0;
+    }
+    .new-price {
+      color: #D9531E;
+      font-size: 24px;
+      font-weight: bold;
+      margin: 6px 0 18px 0;
+    }
+    .card button {
+      background-color: #E8722A;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 13px 30px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    /* 할인율 표시 */
+    .sale {
+      background-color: #D9531E;
+      color: white;
+      border-radius: 6px;
+      padding: 2px 8px;
+      font-size: 16px;
+      margin-right: 6px;
+    }
+
+    /* 베스트 순위 배지 */
+    .rank {
+      background-color: #D9531E;
+      color: white;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      line-height: 44px;
+      font-size: 18px;
+      font-weight: bold;
+      margin: 0 auto 10px auto;
+    }
+
+    /* 오늘배송 배지 */
+    .today {
+      background-color: #2E7D32;
+      color: white;
+      border-radius: 6px;
+      display: inline-block;
+      padding: 4px 12px;
+      font-size: 15px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    /* 포장 안내문 */
+    .pack-note {
+      background-color: #FFF1E0;
+      border: 1px dashed #E8722A;
+      border-radius: 10px;
+      display: inline-block;
+      padding: 14px 24px;
+      margin-top: 18px;
+      font-size: 17px;
+      color: #B4531A;
+    }
+
+    /* 포장 선택 버튼 */
+    .pack-btn {
+      background-color: white;
+      color: #B4531A;
+      border: 2px solid #E8722A;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    /* 분류(카테고리) 제목 */
+    .category-title {
+      font-size: 26px;
+      color: #B4531A;
+      border-bottom: 3px solid #FFD7AE;
+      display: inline-block;
+      padding-bottom: 8px;
+      margin: 50px 0 0 0;
+    }
+
+    /* 4. 맨 아래 연락처 */
+    footer {
+      background-color: #3E3229;
+      color: #FFE3C7;
+      text-align: center;
+      padding: 35px 20px;
+      font-size: 17px;
+      line-height: 2;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 1. 맨 위 : 이름과 한 줄 소개 -->
+  <header>
+    <h1>정일마켓</h1>
+    <p>든든한 한 끼, 편안하게 즐기는 라면 전문점</p>
+  </header>
+
+  <!-- 메뉴 4개 -->
+  <nav>
+    <a href="#">홈</a>
+    <a href="#best">베스트</a>
+    <a href="#ramen">라면</a>
+    <a href="#sausage">소세지</a>
+    <a href="#meat">고기</a>
+    <a href="#fruit">과일·건과</a>
+    <a href="#whisky">위스키</a>
+    <a href="#ball">스포츠용품</a>
+  </nav>
+
+  <!-- 빠른배송 안내 -->
+  <div class="delivery-bar">
+    🚚 오후 3시 이전 주문 시 <u>내일 도착</u> · 5만원 이상 무료배송
+  </div>
+
+  <!-- 베스트 상품 -->
+  <section class="products">
+    <h3 class="category-title" id="best">베스트 상품</h3>
+    <div class="card-box">
+      <div class="card">
+        <div class="rank">1위</div>
+        <div class="emoji">🥩</div>
+        <div class="today">⚡ 오늘 배송</div>
+        <h3>한우 소고기 구이용 300g</h3>
+        <p class="old-price">39,000원</p>
+        <p class="new-price"><span class="sale">50%</span>19,500원</p>
+        <button onclick="showAlert('베스트 1위 한우 소고기를 장바구니에 담았습니다.')">장바구니 담기</button>
+      </div>
+
+      <div class="card">
+        <div class="rank">2위</div>
+        <div class="emoji">🍜</div>
+        <h3>얼큰 사골 라면 5개입</h3>
+        <p class="old-price">6,500원</p>
+        <p class="new-price"><span class="sale">50%</span>3,200원</p>
+        <button onclick="showAlert('베스트 2위 얼큰 사골 라면을 장바구니에 담았습니다.')">장바구니 담기</button>
+      </div>
+
+      <div class="card">
+        <div class="rank">3위</div>
+        <div class="emoji">🌭</div>
+        <h3>통통 후랑크 소세지</h3>
+        <p class="old-price">9,900원</p>
+        <p class="new-price"><span class="sale">50%</span>5,000원</p>
+        <button onclick="showAlert('베스트 3위 통통 후랑크 소세지를 장바구니에 담았습니다.')">장바구니 담기</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. 큰 배너 -->
+  <section class="banner">
+    <h2>🔥 빅세일 50% 🔥</h2>
+    <p>전 상품을 반값에! 지금 바로 만나보세요.</p>
+    <button onclick="showAlert('빅세일 50% 상품을 보여드릴게요.')">할인 상품 보러가기</button>
+  </section>
+
+  <!-- 3. 상품 : 종류별로 분류 -->
+  <section class="products">
+    <h2>빅세일 50% 상품</h2>
+
+    <h3 class="category-title" id="ramen">라면</h3>
+    <div class="card-box">
+      <div class="card">
+        <div class="emoji">🍜</div>
+        <h3>얼큰 사골 라면 5개입</h3>
+        <p class="old-price">6,500원</p>
+        <p class="new-price"><span class="sale">50%</span>3,200원</p>
+        <button onclick="showAlert('얼큰 사골 라면 5개입을(를) 장바구니에 담았습니다.')">장바구니 담기</button>
+      </div>
+
+      <div class="card">
+        <div class="emoji">🌶️</div>
+        <h3>매콤 비빔라면 5개입</h3>
+        <p class="old-price">7,200원</p>
+        <p class="new-price"><span class="sale">50%</span>3,600원</p>
+        <button onclick="showAlert('매콤 비빔라면 5개입을(를) 장바구니에 담았습니다.')">장바구니 담기</button>
+      </div>
+
+      <div class="card">
+        <div class="emoji">🍲</div>
+        <h3>담백 해물 라면 5개입</h3>
+        <p class="old-price">8,000원</p>
+        <p class="new-price"><span class="sale">50%</span>4,000원</p>
+        <button onclick="showAlert('담백 해물 라면 5개입을(를) 장바구니에 담았습니다.')">장바구니 담기</button>
+      </div>
+    </div>
+
+    <h3 class="category-title" id="sausage">소세지</h3>
+    <div class="card-box">
+      <div class="card">
+        <div class="emoji">🌭</div>
+        <h3>통통 후랑크 소세지</h3>
+        <p class="old-price">9,900원</p>
+        <p class="new-price"><span class="sale">50%</span>5,000원</p>
+        <button onclick="showAlert('통통 후랑크 소세지을(를) 장바구니에 담았습니다.')">장바구니 담기</button>
+      </div>
+
+      <div class="card">
+        <div class="emoji">🥓</div>
+        <h3>구워먹는 치즈 소세지</h3>
+        <p class="old-price">11,000원</p>
+        <p class="new-price"><span class="sale">50%</span>5,500원</p>
+        <button onclick="showAlert('구워먹는 치즈 소세지을(를) 장바구니에 담았습니다.')">장바구니 담기</button>
+      </div>
+    </div>
+
+    <h3 class="category-title" id="meat">고기</h3>
+    <p class="pack-note">🧊 모든 고기 상품은 진공포장 + 아이스팩으로 신선하게 배송됩니다. (포장비 무료)</p>
+    <div class="card-box">
+      <div class="card">
+        <div class="emoji">🥩</div>
+        <div class="today">⚡ 오늘 배송</div>
+        <h3>한우 소고기 구이용 300g</h3>
+        <p class="old-price">39,000원</p>
+        <p class="new-price"><span class="sale">50%</span>19,500원</p>
+        <button onclick="showAlert('한우 소고기 구이용 300g을(를) 장바구니에 담았습니다.')">장바구니 담기</button>
+        <br>
+        <button class="pack-btn" onclick="showAlert('한우 소고기 구이용 300g 선물포장을 신청했습니다. (+2,000원)')">🎁 선물포장 추가</button>
+      </div>
+
+      <div class="card">
+        <div class="emoji">🍖</div>
+        <h3>국내산 돼지고기 삼겹살 500g</h3>
+        <p class="old-price">18,000원</p>
+        <p class="new-price"><span class="sale">50%</span>9,000원</p>
+        <button onclick="showAlert('국내산 돼지고기 삼겹살 500g을(를) 장바구니에 담았습니다.')">장바구니 담기</button>
+        <br>
+        <button class="pack-btn" onclick="showAlert('국내산 돼지고기 삼겹살 500g 선물포장을 신청했습니다. (+2,000원)')">🎁 선물포장 추가</button>
+      </div>
+
+      <div class="card">
+        <div class="emoji">🍗</div>
+        <h3>신선한 닭고기 정육 1kg</h3>
+        <p class="old-price">12,000원</p>
+        <p class="new-price"><span class="sale">50%</span>6,000원</p>
+        <button onclick="showAlert('신선한 닭고기 정육 1kg을(를) 장바구니에 담았습니다.')">장바구니 담기</button>
+        <br>
+        <button class="pack-btn" onclick="showAlert('신선한 닭고기 정육 1kg 선물포장을 신청했습니다. (+2,000원)')">🎁 선물포장 추가</button>
+      </div>
+    </div>
+
+    <h3 class="category-title" id="fruit">과일·건과</h3>
+    <p class="pack-note">🧺 모두 1봉지 단위로 판매합니다. 신선하게 포장해 보내드려요.</p>
+    <div class="card-box">
+      <div class="card">
+        <div class="emoji">🍎</div>
+        <h3>햇사과 1봉지</h3>
+        <p class="old-price">18,000원</p>
+        <p class="new-price"><span class="sale">50%</span>9,000원</p>
+        <button onclick="showAlert('햇사과 1봉지 1봉지를 장바구니에 담았습니다.')">장바구니 담기</button>
+      </div>
+
+      <div class="card">
+        <div class="emoji">🍐</div>
+        <h3>달콤한 배 1봉지</h3>
+        <p class="old-price">22,000원</p>
+        <p class="new-price"><span class="sale">50%</span>11,000원</p>
+        <button onclick="showAlert('달콤한 배 1봉지 1봉지를 장바구니에 담았습니다.')">장바구니 담기</button>
+      </div>
+
+      <div class="card">
+        <div class="emoji">🍂</div>
+        <h3>쫀득 곶감 1봉지</h3>
+        <p class="old-price">26,000원</p>
+        <p class="new-price"><span class="sale">50%</span>13,000원</p>
+        <button onclick="showAlert('쫀득 곶감 1봉지 1봉지를 장바구니에 담았습니다.')">장바구니 담기</button>
+      </div>
+
+      <div class="card">
+        <div class="emoji">🟤</div>
+        <h3>국산 대추 1봉지</h3>
+        <p class="old-price">15,000원</p>
+        <p class="new-price"><span class="sale">50%</span>7,500원</p>
+        <button onclick="showAlert('국산 대추 1봉지 1봉지를 장바구니에 담았습니다.')">장바구니 담기</button>
+      </div>
+
+      <div class="card">
+        <div class="emoji">🌰</div>
+        <h3>포슬포슬 밤 1봉지</h3>
+        <p class="old-price">13,000원</p>
+        <p class="new-price"><span class="sale">50%</span>6,500원</p>
+        <button onclick="showAlert('포슬포슬 밤 1봉지 1봉지를 장바구니에 담았습니다.')">장바구니 담기</button>
+      </div>
+    </div>
+
+    <h3 class="category-title" id="whisky">위스키</h3>
+    <p class="pack-note">🔞 주류는 성인만 구매할 수 있으며, 배송 시 신분증 확인이 필요합니다.</p>
+    <div class="card-box">
+      <div class="card">
+        <div class="emoji">🥃</div>
+        <h3>싱글몰트 위스키 700ml</h3>
+        <p class="old-price">128,000원</p>
+        <p class="new-price"><span class="sale">50%</span>64,000원</p>
+        <button onclick="showAlert('싱글몰트 위스키 700ml을(를) 장바구니에 담았습니다.')">장바구니 담기</button>
+      </div>
+
+      <div class="card">
+        <div class="emoji">🛢️</div>
+        <h3>버번 위스키 750ml</h3>
+        <p class="old-price">72,000원</p>
+        <p class="new-price"><span class="sale">50%</span>36,000원</p>
+        <button onclick="showAlert('버번 위스키 750ml을(를) 장바구니에 담았습니다.')">장바구니 담기</button>
+      </div>
+
+      <div class="card">
+        <div class="emoji">🍯</div>
+        <h3>블렌디드 위스키 700ml</h3>
+        <p class="old-price">55,000원</p>
+        <p class="new-price"><span class="sale">50%</span>27,500원</p>
+        <button onclick="showAlert('블렌디드 위스키 700ml을(를) 장바구니에 담았습니다.')">장바구니 담기</button>
+      </div>
+
+      <div class="card">
+        <div class="emoji">☘️</div>
+        <h3>아이리시 위스키 700ml</h3>
+        <p class="old-price">64,000원</p>
+        <p class="new-price"><span class="sale">50%</span>32,000원</p>
+        <button onclick="showAlert('아이리시 위스키 700ml을(를) 장바구니에 담았습니다.')">장바구니 담기</button>
+      </div>
+    </div>
+
+    <h3 class="category-title" id="ball">스포츠용품</h3>
+    <div class="card-box">
+      <div class="card">
+        <div class="emoji">⚽</div>
+        <h3>튼튼한 축구공</h3>
+        <p class="old-price">32,000원</p>
+        <p class="new-price"><span class="sale">50%</span>16,000원</p>
+        <button onclick="showAlert('튼튼한 축구공을(를) 장바구니에 담았습니다.')">장바구니 담기</button>
+      </div>
+
+      <div class="card">
+        <div class="emoji">⚾</div>
+        <h3>연습용 야구공 3개입</h3>
+        <p class="old-price">18,000원</p>
+        <p class="new-price"><span class="sale">50%</span>9,000원</p>
+        <button onclick="showAlert('연습용 야구공 3개입을(를) 장바구니에 담았습니다.')">장바구니 담기</button>
+      </div>
+
+      <div class="card">
+        <div class="emoji">⛳</div>
+        <h3>골프공 12구 세트</h3>
+        <p class="old-price">45,000원</p>
+        <p class="new-price"><span class="sale">50%</span>22,500원</p>
+        <button onclick="showAlert('골프공 12구 세트을(를) 장바구니에 담았습니다.')">장바구니 담기</button>
+      </div>
+
+      <div class="card">
+        <div class="emoji">🎾</div>
+        <h3>테니스공 4개입</h3>
+        <p class="old-price">16,000원</p>
+        <p class="new-price"><span class="sale">50%</span>8,000원</p>
+        <button onclick="showAlert('테니스공 4개입을(를) 장바구니에 담았습니다.')">장바구니 담기</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. 맨 아래 연락처 -->
+  <footer>
+    <p>
+      승지마켓 · 고객센터 1588-0000<br>
+      평일 10:00 ~ 18:00 (점심 12:00 ~ 13:00 / 주말·공휴일 휴무)<br>
+      이메일 help@seungji.com<br>
+      배송 문의는 고객센터 또는 이메일로 연락 주세요. (당일 출고 마감 오후 3시)
+    </p>
+  </footer>
+
+  <!-- ===== JavaScript (동작) ===== -->
+  <script>
+    // 버튼을 누르면 알림창을 띄우는 함수
+    function showAlert(message) {
+      alert(message);
+    }
+  </script>
+
+</body>
+</html>
