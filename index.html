@@ -243,6 +243,37 @@
       color: #6B5A4C;
     }
 
+    /* 상품 검색창 */
+    .search-area {
+      text-align: center;
+      padding: 30px 20px 10px 20px;
+    }
+    .search-area input {
+      width: 340px;
+      max-width: 80%;
+      padding: 14px 18px;
+      font-size: 18px;
+      border: 2px solid #E8722A;
+      border-radius: 10px;
+      outline: none;
+    }
+    .search-area button {
+      background-color: #E8722A;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 15px 25px;
+      font-size: 18px;
+      margin-left: 8px;
+      cursor: pointer;
+    }
+    #searchResult {
+      font-size: 17px;
+      color: #B4531A;
+      margin: 14px 0 0 0;
+      min-height: 24px;
+    }
+
     /* 찜하기 버튼 */
     .heart-btn {
       background-color: white;
@@ -351,6 +382,13 @@
   <!-- 빠른배송 안내 -->
   <div class="delivery-bar">
     🚚 오후 3시 이전 주문 시 <u>내일 도착</u> · 5만원 이상 무료배송
+  </div>
+
+  <!-- 상품 검색 -->
+  <div class="search-area">
+    <input type="text" id="searchInput" placeholder="찾으시는 상품을 입력하세요" onkeyup="searchProduct()">
+    <button onclick="searchProduct()">🔍 검색</button>
+    <p id="searchResult"></p>
   </div>
 
   <!-- 베스트 상품 -->
@@ -712,6 +750,60 @@
     // 버튼을 누르면 알림창을 띄우는 함수
     function showAlert(message) {
       alert(message);
+    }
+
+    // ===== 상품 검색 기능 =====
+
+    function searchProduct() {
+      var word = document.getElementById("searchInput").value.trim();
+      var cards = document.querySelectorAll(".card");
+      var found = 0;
+
+      // 1) 상품 이름에 검색어가 들어 있으면 보이고, 없으면 숨기기
+      for (var i = 0; i < cards.length; i++) {
+        var name = cards[i].querySelector("h3").textContent;
+
+        if (word === "" || name.indexOf(word) !== -1) {
+          cards[i].style.display = "";
+          found++;
+        } else {
+          cards[i].style.display = "none";
+        }
+      }
+
+      // 2) 상품이 하나도 안 남은 분류는 제목과 안내문까지 숨기기
+      var boxes = document.querySelectorAll(".card-box");
+
+      for (var j = 0; j < boxes.length; j++) {
+        var inBox = boxes[j].querySelectorAll(".card");
+        var count = 0;
+
+        for (var k = 0; k < inBox.length; k++) {
+          if (inBox[k].style.display !== "none") {
+            count++;
+          }
+        }
+
+        var hide = (count === 0) ? "none" : "";
+        boxes[j].style.display = hide;
+
+        var prev = boxes[j].previousElementSibling;
+        while (prev && (prev.className === "category-title" || prev.className === "pack-note")) {
+          prev.style.display = hide;
+          prev = prev.previousElementSibling;
+        }
+      }
+
+      // 3) 검색 결과 알려주기
+      var result = document.getElementById("searchResult");
+
+      if (word === "") {
+        result.textContent = "";
+      } else if (found === 0) {
+        result.textContent = "'" + word + "' 검색 결과가 없습니다.";
+      } else {
+        result.textContent = "'" + word + "' 검색 결과 " + found + "개";
+      }
     }
 
     // ===== 찜하기 기능 =====
