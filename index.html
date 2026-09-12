@@ -7,351 +7,458 @@
 
   <!-- ===== CSS (디자인) ===== -->
   <style>
-    /* 전체 기본 설정 : 50대 고객을 위해 글씨를 크게 */
-    body {
-      margin: 0;
-      font-family: "맑은 고딕", sans-serif;
-      background-color: #FFF8F0;
-      color: #3E3229;
-      font-size: 18px;
-      line-height: 1.7;
+    /* ===================================================
+       색과 글자 크기 기준 (여기만 바꾸면 전체가 바뀝니다)
+       =================================================== */
+    :root {
+      --orange: #E0691F;        /* 주요 주황 */
+      --orange-dark: #A34712;   /* 진한 주황 (글자용) */
+      --orange-soft: #FFF1E4;   /* 연한 주황 배경 */
+      --cream: #FFFBF7;         /* 전체 배경 */
+      --white: #FFFFFF;
+      --text: #2B2320;          /* 본문 글자 */
+      --text-soft: #6B5C52;     /* 흐린 글자 */
+      --line: #EDDFD3;          /* 테두리 */
+      --red: #C7301A;           /* 할인 가격 */
+      --green: #1B6B3A;         /* 오늘 배송 */
+      --shadow: 0 2px 10px rgba(60, 40, 25, 0.06);
+      --shadow-up: 0 10px 26px rgba(60, 40, 25, 0.12);
     }
 
-    /* 1. 맨 위 : 쇼핑몰 이름과 소개 */
+    /* 글자 크기 기준. 버튼으로 이 값을 키울 수 있습니다. */
+    html { font-size: 18px; }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont,
+                   "Malgun Gothic", "맑은 고딕", sans-serif;
+      background-color: var(--cream);
+      color: var(--text);
+      font-size: 1rem;
+      line-height: 1.75;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    button { font-family: inherit; }
+
+    /* ===================================================
+       1. 맨 위 : 쇼핑몰 이름과 소개
+       =================================================== */
     header {
-      background-color: #E8722A;
-      color: white;
+      background: linear-gradient(135deg, #EE8438 0%, #C9551A 100%);
+      color: var(--white);
       text-align: center;
-      padding: 40px 20px;
+      padding: 3.2rem 1.25rem 2.8rem 1.25rem;
     }
     header h1 {
       margin: 0;
-      font-size: 42px;
+      font-size: 2.5rem;
+      letter-spacing: -0.02em;
     }
     header p {
-      margin: 12px 0 0 0;
-      font-size: 20px;
+      margin: 0.7rem 0 0 0;
+      font-size: 1.05rem;
     }
 
-    /* 메뉴 4개 */
+    /* ===================================================
+       메뉴 : 위에 붙어서 따라다님
+       =================================================== */
     nav {
-      background-color: #FFE3C7;
-      text-align: center;
-      padding: 18px;
-    }
-    nav a {
-      margin: 0 18px;
-      color: #B4531A;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 20px;
-    }
-
-    /* 빠른배송 안내띠 */
-    .delivery-bar {
-      background-color: #B4531A;
-      color: white;
-      text-align: center;
-      padding: 14px 20px;
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    /* 2. 큰 배너 */
-    .banner {
-      background-color: #FFD7AE;
-      text-align: center;
-      padding: 70px 20px;
-    }
-    .banner h2 {
-      font-size: 34px;
-      margin: 0 0 12px 0;
-    }
-    .banner p {
-      font-size: 20px;
-      margin: 0 0 30px 0;
-    }
-    .banner button {
-      background-color: #E8722A;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      padding: 18px 45px;
-      font-size: 22px;
-      cursor: pointer;
-    }
-
-    /* 3. 상품 카드 3개 */
-    .products {
-      text-align: center;
-      padding: 55px 20px;
-    }
-    .products h2 {
-      font-size: 30px;
-    }
-    .card-box {
+      position: sticky;
+      top: 0;
+      z-index: 20;
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
-      gap: 25px;
-      margin-top: 35px;
+      gap: 0.3rem;
+      padding: 0.5rem 0.8rem;
+      background-color: rgba(255, 251, 247, 0.95);
+      border-bottom: 1px solid var(--line);
+      overflow-x: auto;
     }
+    nav a {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      min-height: 48px;
+      padding: 0 1rem;
+      border-radius: 999px;
+      color: var(--orange-dark);
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    nav a:hover { background-color: var(--orange-soft); }
+
+    /* ===================================================
+       빠른배송 안내띠
+       =================================================== */
+    .delivery-bar {
+      background-color: var(--orange-dark);
+      color: var(--white);
+      text-align: center;
+      padding: 0.85rem 1rem;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    /* ===================================================
+       글자 크기 조절 버튼
+       =================================================== */
+    .text-size {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 1.25rem 0 1.25rem;
+      text-align: right;
+    }
+    .text-size button {
+      min-height: 48px;
+      padding: 0 1.2rem;
+      border: 2px solid var(--line);
+      border-radius: 999px;
+      background-color: var(--white);
+      color: var(--text-soft);
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .text-size button:hover { border-color: var(--orange); color: var(--orange-dark); }
+
+    /* ===================================================
+       상품 검색창
+       =================================================== */
+    .search-area {
+      text-align: center;
+      padding: 1.2rem 1.25rem 0 1.25rem;
+    }
+    .search-area input {
+      width: 22rem;
+      max-width: 100%;
+      margin: 0.3rem;
+      padding: 0.9rem 1.1rem;
+      border: 2px solid var(--line);
+      border-radius: 14px;
+      background-color: var(--white);
+      color: var(--text);
+      font-size: 1.05rem;
+      outline: none;
+    }
+    .search-area input:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 4px rgba(224, 105, 31, 0.18);
+    }
+    .search-area button {
+      min-height: 52px;
+      margin: 0.3rem;
+      padding: 0 1.5rem;
+      border: none;
+      border-radius: 14px;
+      background-color: var(--orange);
+      color: var(--white);
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .search-area button:hover { background-color: var(--orange-dark); }
+    #searchResult {
+      margin: 0.9rem 0 0 0;
+      min-height: 1.6rem;
+      color: var(--orange-dark);
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    /* ===================================================
+       상품 영역
+       =================================================== */
+    .products {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 2rem 1.25rem;
+    }
+    .products h2 {
+      margin: 2.5rem 0 0 0;
+      font-size: 1.7rem;
+      text-align: center;
+    }
+
+    /* 분류 제목 */
+    .category-title {
+      display: inline-block;
+      margin: 2.6rem 0 0 0;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid var(--orange);
+      color: var(--orange-dark);
+      font-size: 1.4rem;
+    }
+
+    /* 분류 안내문 */
+    .pack-note {
+      display: block;
+      margin: 0.9rem 0 0 0;
+      padding: 0.9rem 1.2rem;
+      border-radius: 14px;
+      background-color: var(--orange-soft);
+      color: var(--orange-dark);
+      font-size: 0.95rem;
+    }
+
+    /* 상품 카드 자동 정렬 */
+    .card-box {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+      gap: 1.2rem;
+      margin: 1.4rem 0 0 0;
+    }
+
     .card {
-      background-color: white;
-      border: 1px solid #F0DCC8;
-      border-radius: 12px;
-      width: 260px;
-      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1.4rem 1.1rem 1.5rem 1.1rem;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background-color: var(--white);
+      box-shadow: var(--shadow);
+      text-align: center;
+      transition: transform 0.15s, box-shadow 0.15s;
     }
-    .card .emoji {
-      font-size: 80px;
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-up);
     }
+    .card br { display: none; }
+
+    .card .emoji { font-size: 3.4rem; line-height: 1.2; }
     .card h3 {
-      font-size: 21px;
-      margin: 15px 0 12px 0;
+      margin: 0.7rem 0 0.6rem 0;
+      font-size: 1.05rem;
+      line-height: 1.5;
     }
+
+    /* 순위 배지 */
+    .rank {
+      width: 2.6rem;
+      height: 2.6rem;
+      margin-bottom: 0.5rem;
+      border-radius: 50%;
+      background-color: var(--orange);
+      color: var(--white);
+      font-size: 0.95rem;
+      font-weight: 700;
+      line-height: 2.6rem;
+    }
+
+    /* 오늘 배송 배지 */
+    .today {
+      margin-bottom: 0.4rem;
+      padding: 0.25rem 0.8rem;
+      border-radius: 999px;
+      background-color: #E4F3E9;
+      color: var(--green);
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    /* 가격 */
     .old-price {
-      color: #999999;
-      text-decoration: line-through;
-      font-size: 17px;
       margin: 0;
+      color: var(--text-soft);
+      font-size: 0.9rem;
+      text-decoration: line-through;
     }
     .new-price {
-      color: #D9531E;
-      font-size: 24px;
-      font-weight: bold;
-      margin: 6px 0 18px 0;
+      margin: 0.2rem 0 0.9rem 0;
+      color: var(--red);
+      font-size: 1.35rem;
+      font-weight: 800;
     }
-    .card button {
-      background-color: #E8722A;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      padding: 13px 30px;
-      font-size: 18px;
-      cursor: pointer;
-    }
-
-    /* 할인율 표시 */
     .sale {
-      background-color: #D9531E;
-      color: white;
-      border-radius: 6px;
-      padding: 2px 8px;
-      font-size: 16px;
-      margin-right: 6px;
-    }
-
-    /* 베스트 순위 배지 */
-    .rank {
-      background-color: #D9531E;
-      color: white;
-      border-radius: 50%;
-      width: 44px;
-      height: 44px;
-      line-height: 44px;
-      font-size: 18px;
-      font-weight: bold;
-      margin: 0 auto 10px auto;
-    }
-
-    /* 오늘배송 배지 */
-    .today {
-      background-color: #2E7D32;
-      color: white;
-      border-radius: 6px;
       display: inline-block;
-      padding: 4px 12px;
-      font-size: 15px;
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
-
-    /* 포장 안내문 */
-    .pack-note {
-      background-color: #FFF1E0;
-      border: 1px dashed #E8722A;
-      border-radius: 10px;
-      display: inline-block;
-      padding: 14px 24px;
-      margin-top: 18px;
-      font-size: 17px;
-      color: #B4531A;
-    }
-
-    /* 포장 선택 버튼 */
-    .pack-btn {
-      background-color: white;
-      color: #B4531A;
-      border: 2px solid #E8722A;
+      margin-right: 0.4rem;
+      padding: 0.15rem 0.55rem;
       border-radius: 8px;
-      padding: 10px 20px;
-      font-size: 16px;
-      margin-top: 10px;
+      background-color: var(--red);
+      color: var(--white);
+      font-size: 0.85rem;
+      vertical-align: middle;
+    }
+
+    /* 카드 안 버튼들 */
+    .card button {
+      width: 100%;
+      min-height: 50px;
+      margin-top: auto;
+      border: none;
+      border-radius: 14px;
+      background-color: var(--orange);
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 700;
       cursor: pointer;
     }
+    .card button:hover { background-color: var(--orange-dark); }
 
-    /* 분류(카테고리) 제목 */
-    .category-title {
-      font-size: 26px;
-      color: #B4531A;
-      border-bottom: 3px solid #FFD7AE;
-      display: inline-block;
-      padding-bottom: 8px;
-      margin: 50px 0 0 0;
+    .card .pack-btn,
+    .card .heart-btn {
+      margin-top: 0.5rem;
+      border: 2px solid var(--line);
+      background-color: var(--white);
+      color: var(--text-soft);
+      font-size: 0.95rem;
+    }
+    .card .pack-btn:hover,
+    .card .heart-btn:hover {
+      border-color: var(--orange);
+      background-color: var(--orange-soft);
+      color: var(--orange-dark);
+    }
+    .card .heart-btn.on {
+      border-color: #E88C8C;
+      background-color: #FFEDED;
+      color: var(--red);
     }
 
-    /* 쇼핑몰 소개 */
+    /* ===================================================
+       2. 큰 배너
+       =================================================== */
+    .banner {
+      max-width: 1200px;
+      margin: 1.5rem auto;
+      padding: 3.5rem 1.5rem;
+      border-radius: 26px;
+      background: linear-gradient(135deg, #FFE2C8 0%, #FFC9A2 100%);
+      text-align: center;
+    }
+    .banner h2 { margin: 0 0 0.6rem 0; font-size: 2rem; }
+    .banner p { margin: 0 0 1.8rem 0; font-size: 1.1rem; }
+    .banner button {
+      min-height: 56px;
+      padding: 0 2.4rem;
+      border: none;
+      border-radius: 16px;
+      background-color: var(--orange);
+      color: var(--white);
+      font-size: 1.15rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+    }
+    .banner button:hover { background-color: var(--orange-dark); }
+
+    /* ===================================================
+       쇼핑몰 소개
+       =================================================== */
     .about {
-      background-color: #FFF1E0;
-      padding: 60px 20px;
+      margin-top: 2rem;
+      padding: 4rem 1.25rem;
+      background-color: var(--orange-soft);
       text-align: center;
     }
     .about h2 {
-      font-size: 30px;
-      margin: 0 0 20px 0;
-      color: #B4531A;
+      margin: 0 0 1.2rem 0;
+      color: var(--orange-dark);
+      font-size: 1.8rem;
     }
     .about p {
-      max-width: 760px;
-      margin: 0 auto 18px auto;
-      font-size: 18px;
-      line-height: 1.9;
+      max-width: 42rem;
+      margin: 0 auto 1rem auto;
+      font-size: 1.05rem;
     }
     .about .point-box {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin-top: 35px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+      gap: 1.2rem;
+      max-width: 900px;
+      margin: 2.2rem auto 0 auto;
     }
     .about .point {
-      background-color: white;
-      border-radius: 12px;
-      width: 240px;
-      padding: 25px 20px;
+      padding: 1.8rem 1.2rem;
+      border-radius: 20px;
+      background-color: var(--white);
+      box-shadow: var(--shadow);
     }
-    .about .point .icon {
-      font-size: 46px;
-    }
-    .about .point h3 {
-      font-size: 19px;
-      margin: 12px 0 8px 0;
-    }
-    .about .point span {
-      font-size: 16px;
-      color: #6B5A4C;
-    }
+    .about .point .icon { font-size: 2.6rem; }
+    .about .point h3 { margin: 0.7rem 0 0.4rem 0; font-size: 1.1rem; }
+    .about .point span { color: var(--text-soft); font-size: 0.95rem; }
 
-    /* 상품 검색창 */
-    .search-area {
-      text-align: center;
-      padding: 30px 20px 10px 20px;
-    }
-    .search-area input {
-      width: 340px;
-      max-width: 80%;
-      padding: 14px 18px;
-      font-size: 18px;
-      border: 2px solid #E8722A;
-      border-radius: 10px;
-      outline: none;
-    }
-    .search-area button {
-      background-color: #E8722A;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      padding: 15px 25px;
-      font-size: 18px;
-      margin-left: 8px;
-      cursor: pointer;
-    }
-    #searchResult {
-      font-size: 17px;
-      color: #B4531A;
-      margin: 14px 0 0 0;
-      min-height: 24px;
-    }
-
-    /* 찜하기 버튼 */
-    .heart-btn {
-      background-color: white;
-      color: #8A7565;
-      border: 2px solid #DDCDBD;
-      border-radius: 8px;
-      padding: 9px 18px;
-      font-size: 15px;
-      margin-top: 10px;
-      cursor: pointer;
-    }
-    /* 찜한 상태일 때 */
-    .heart-btn.on {
-      background-color: #FFE3E3;
-      color: #C62828;
-      border-color: #E57373;
-      font-weight: bold;
-    }
-
-    /* 화면 오른쪽 위에 붙어 다니는 찜 목록 버튼 */
+    /* ===================================================
+       찜 목록 버튼 (화면 오른쪽 아래에 붙어 다님)
+       =================================================== */
     .wish-bar {
       position: fixed;
-      top: 20px;
-      right: 20px;
-      background-color: white;
-      border: 2px solid #E8722A;
-      border-radius: 30px;
-      padding: 12px 22px;
-      font-size: 17px;
-      font-weight: bold;
-      color: #B4531A;
+      right: 1.2rem;
+      bottom: 1.2rem;
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      min-height: 56px;
+      padding: 0 1.4rem;
+      border: 2px solid var(--orange);
+      border-radius: 999px;
+      background-color: var(--white);
+      color: var(--orange-dark);
+      font-size: 1.05rem;
+      font-weight: 700;
+      box-shadow: var(--shadow-up);
       cursor: pointer;
-      z-index: 10;
     }
+    .wish-bar:hover { background-color: var(--orange-soft); }
 
-    /* 4. 맨 아래 연락처 */
+    /* ===================================================
+       4. 맨 아래 안내
+       =================================================== */
     footer {
-      background-color: #3E3229;
-      color: #FFE3C7;
-      padding: 45px 20px 25px 20px;
-      font-size: 16px;
+      padding: 3rem 1.25rem 1.5rem 1.25rem;
+      background-color: #2E2621;
+      color: #E6D9CD;
+      font-size: 0.95rem;
       line-height: 1.9;
     }
-
-    /* 안내를 3칸으로 나누기 */
     .foot-box {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 50px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
       text-align: left;
     }
     .foot-box h3 {
-      font-size: 17px;
-      color: white;
-      margin: 0 0 10px 0;
-      padding-bottom: 8px;
-      border-bottom: 1px solid #6B5A4C;
-    }
-    .foot-box div {
-      min-width: 240px;
+      margin: 0 0 0.7rem 0;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #574A41;
+      color: var(--white);
+      font-size: 1rem;
     }
     .foot-box .big {
-      font-size: 26px;
-      font-weight: bold;
-      color: white;
       display: block;
-      margin-bottom: 4px;
+      margin-bottom: 0.2rem;
+      color: var(--white);
+      font-size: 1.6rem;
+      font-weight: 800;
+    }
+    .copyright {
+      max-width: 1000px;
+      margin: 2.2rem auto 0 auto;
+      padding-top: 1.2rem;
+      border-top: 1px solid #574A41;
+      color: #B9A99B;
+      font-size: 0.85rem;
+      text-align: center;
     }
 
-    /* 맨 아랫줄 */
-    .copyright {
-      text-align: center;
-      margin-top: 35px;
-      padding-top: 20px;
-      border-top: 1px solid #6B5A4C;
-      font-size: 14px;
-      color: #C9B8A8;
+    /* ===================================================
+       화면이 좁을 때 (휴대폰)
+       =================================================== */
+    @media (max-width: 640px) {
+      header { padding: 2.4rem 1rem 2rem 1rem; }
+      header h1 { font-size: 2rem; }
+      nav { justify-content: flex-start; }
+      .banner { margin: 1rem; padding: 2.6rem 1.2rem; border-radius: 20px; }
+      .banner h2 { font-size: 1.6rem; }
+      .card-box { grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); gap: 0.9rem; }
+      .wish-bar { right: 0.8rem; bottom: 0.8rem; }
     }
   </style>
 </head>
@@ -382,6 +489,11 @@
   <!-- 빠른배송 안내 -->
   <div class="delivery-bar">
     🚚 오후 3시 이전 주문 시 <u>내일 도착</u> · 5만원 이상 무료배송
+  </div>
+
+  <!-- 글자 크기 조절 -->
+  <div class="text-size">
+    <button id="textSizeBtn" onclick="toggleTextSize()">🔍 글자 크게</button>
   </div>
 
   <!-- 상품 검색 -->
@@ -811,6 +923,29 @@
     function showAlert(message) {
       alert(message);
     }
+
+    // ===== 글자 크기 조절 =====
+
+    // 저장해 둔 글자 크기가 있으면 불러오기
+    var bigText = (localStorage.getItem("bigText") === "yes");
+
+    function drawTextSize() {
+      if (bigText) {
+        document.documentElement.style.fontSize = "22px";
+        document.getElementById("textSizeBtn").textContent = "🔍 글자 보통";
+      } else {
+        document.documentElement.style.fontSize = "18px";
+        document.getElementById("textSizeBtn").textContent = "🔍 글자 크게";
+      }
+    }
+
+    function toggleTextSize() {
+      bigText = !bigText;
+      localStorage.setItem("bigText", bigText ? "yes" : "no");
+      drawTextSize();
+    }
+
+    drawTextSize();
 
     // ===== 상품 검색 기능 =====
 
